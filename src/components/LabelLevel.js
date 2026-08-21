@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import {colors, spacing } from '../theme';
 
-export default function LabelLevel() {
+export default function LabelLevel({ level }) {
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Level</Text>
+            <Text style={styles.text}>{level}</Text>
         </View>
     );
 }
