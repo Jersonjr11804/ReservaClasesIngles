@@ -20,37 +20,34 @@ export default function Card({ clase, onPress }) {
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: colors.white,
-    borderRadius: radius.md,
+const style = StyleSheet.create({
+  tarjeta: {
+    backgroundColor: colors.superficie,
+    borderRadius: radius.lg,
     overflow: 'hidden',
-    marginBottom: spacing.md,
+    marginBottom: spacing.lg,
   },
-  image: {
+  imagen: {
     width: '100%',
-    height: 160,
+    height: 130,
+    backgroundColor: colors.primarioSuave,
   },
-  content: {
-    padding: spacing.md,
+  cuerpo: {
+    padding: spacing.lg,
+    gap: spacing.sm,
   },
-  info: {
-    marginTop: spacing.sm,
+  titulo: { fontSize: 16, fontWeight: '700', color: colors.texto },
+  filaProfesor: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  avatar: { width: 24, height: 24, borderRadius: 12, backgroundColor: colors.borde },
+  profesor: { fontSize: 13, color: colors.textoSuave, flexShrink: 1 },
+  pie: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: spacing.xs,
   },
-  teacher: {
-    fontSize: typography.body,
-    fontWeight: '600',
-    color: colors.text,
-  },
-  schedule: {
-    fontSize: typography.caption,
-    color: colors.muted,
-    marginTop: 4,
-  },
-  price: {
-    fontSize: typography.h6,
-    fontWeight: '700',
-    color: colors.primary,
-    marginTop: 6,
-  },
+  filaCentro: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  meta: { fontSize: 12, color: colors.textoSuave },
+  punto: { color: colors.borde, marginHorizontal: 2 },
+  precio: { fontSize: 14, fontWeight: '800', color: colors.primario },
 });
