@@ -1,18 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import LabelLevel from './LabelLevel';
-import {colors, radius,spacing, typography} from '../theme';
-import {formatearPrecio} from '..data/clases';
+import { Pressable, View, Text, Image, StyleSheet } from 'react-native';
+import EtiquetaNivel from './EtiquetaNivel';
+import { colors, radius, spacing, typography } from '../theme';
+import { formatearPrecio } from '../data/clases';
 
 export default function Card({ clase, onPress }) {
   return (
     <Pressable onPress={onPress} style={styles.card}>
-      <Image source={{ uri: clase.Image }} style={styles.image} />
-      <View style={styles.content}>
-        <LabelLevel level={clase.level} />
-        <View style={styles.info}>
-          <Text style={styles.teacher}>{clase.profesor}</Text>
-          <Text style={styles.schedule}>{clase.horario}</Text>
+      <Image source={{ uri: clase.imagen }} style={styles.image} />
+      <View style={styles.body}>
+        <View style={styles.row}> 
+          <EtiquetaNivel nivel={clase.nivel} />
+          <Text style={styles.title}>{clase.titulo}</Text>
+        </View>
+        <Text style={styles.teacher}>{clase.profesor.nombre}</Text>
+        <View style={styles.footer}>
+          <Text style={styles.cupos}>Cupos: {clase.cupos}</Text>
           <Text style={styles.price}>{formatearPrecio(clase.precio)}</Text>
         </View>
       </View>
@@ -20,34 +23,14 @@ export default function Card({ clase, onPress }) {
   );
 }
 
-const style = StyleSheet.create({
-  tarjeta: {
-    backgroundColor: colors.superficie,
-    borderRadius: radius.lg,
-    overflow: 'hidden',
-    marginBottom: spacing.lg,
-  },
-  imagen: {
-    width: '100%',
-    height: 130,
-    backgroundColor: colors.primarioSuave,
-  },
-  cuerpo: {
-    padding: spacing.lg,
-    gap: spacing.sm,
-  },
-  titulo: { fontSize: 16, fontWeight: '700', color: colors.texto },
-  filaProfesor: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  avatar: { width: 24, height: 24, borderRadius: 12, backgroundColor: colors.borde },
-  profesor: { fontSize: 13, color: colors.textoSuave, flexShrink: 1 },
-  pie: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: spacing.xs,
-  },
-  filaCentro: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  meta: { fontSize: 12, color: colors.textoSuave },
-  punto: { color: colors.borde, marginHorizontal: 2 },
-  precio: { fontSize: 14, fontWeight: '800', color: colors.primario },
+const styles = StyleSheet.create({
+  card: { backgroundColor: colors.superficie, borderRadius: radius.lg, overflow: 'hidden', margin: spacing.sm, flex: 1, minWidth: 160 },
+  image: { width: '100%', height: 120, backgroundColor: colors.primarioSuave },
+  body: { padding: spacing.md },
+  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  title: { fontSize: 16, fontWeight: '700', color: colors.texto, marginLeft: spacing.sm, flex: 1 },
+  teacher: { color: colors.textoSuave, marginTop: spacing.xs },
+  footer: { flexDirection: 'row', justifyContent: 'space-between', marginTop: spacing.sm },
+  cupos: { fontWeight: '700' },
+  price: { color: colors.primario, fontWeight: '800' },
 });
