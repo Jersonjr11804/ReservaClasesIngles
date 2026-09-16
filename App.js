@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ClasesStack from './src/navigation/ClasesStack';
+import { ClasesProvider } from './src/context/ClasesContext';
 import { colors } from './src/theme/index';
 
 const temaNavegacion = {
@@ -21,7 +22,9 @@ export default function App() {
   return (
     <NavigationContainer theme={temaNavegacion}>
       <SafeAreaProvider>
-        <ClasesStack />
+        <ClasesProvider>
+          <ClasesStack />
+        </ClasesProvider>
         <StatusBar style="auto" />
       </SafeAreaProvider>
     </NavigationContainer>

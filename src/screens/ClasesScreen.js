@@ -9,7 +9,8 @@ import EstadoVacio from '../components/EstadoVacio';
 import useResponsive from '../hooks/useResponsive';
 
 import { colors, radius, spacing, typography} from '../theme';
-import { formatearPrecio, CLASES, NIVELES } from '../data/clases';
+import { formatearPrecio, NIVELES } from '../data/clases';
+import { useClases } from '../context/ClasesContext';
 
 export default function ClasesScreen ({ navigation }){
     const insets = useSafeAreaInsets();
@@ -18,16 +19,18 @@ export default function ClasesScreen ({ navigation }){
     const {columnas , paddingHorizontal} = useResponsive()
     const [busqueda, setBusqueda] = useState('')
 
+    const { clases } = useClases();
+
     const resultados = useMemo(()=>{
         const textoBusqueda = busqueda.trim().toLowerCase();
-        return CLASES.filter((clase)=>{
-            const coincidenciaNivel = nivel === 'todos' || clase.nivel === nivel
-            const coincidenciaTexto = textoBusqueda ||
+        return clases.filter((clase)=>{
+            const coincidenciaNivel = !nivel || nivel === 'Todos' || clase.nivel === nivel
+            const coincidenciaTexto = !textoBusqueda ||
             clase.titulo.toLowerCase().includes(textoBusqueda) ||
             clase.profesor.nombre.toLowerCase().includes(textoBusqueda);
             return coincidenciaNivel && coincidenciaTexto
         });
-    },[nivel, busqueda,]);
+    },[nivel, busqueda, clases]);
 
     return(
         <View style ={[style.pantalla, {paddingTop: insets.top + spacing.sm}]}>
