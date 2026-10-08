@@ -1,24 +1,32 @@
-import { Pressable, StyleSheet, Text } from "react-native";
-import { colors, radius, spacing } from "../theme/index";
+import React from 'react';
+import { Pressable, Text, StyleSheet } from 'react-native';
 
+import { colors, spacing, radius } from '../theme';
+
+// Botón tipo chip para filtrar por nivel de clase.
+// Muestra si está activo o no y responde al toque del usuario.
 export default function NivelChip({ etiqueta, activo, onPress }) {
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [
-        style.chip,
-        activo && style.chipActivo,
-        pressed && { opacity: 0.7 },
+        styles.chip,
+        activo && styles.chipActivo,
+        pressed && styles.chipPressed,
       ]}
     >
-      <Text style={[style.texto, activo && style.textoActivo]}>{etiqueta}</Text>
+      <Text style={[styles.texto, activo && styles.textoActivo]}>{etiqueta}</Text>
     </Pressable>
   );
 }
-const style = StyleSheet.create({
+
+const styles = StyleSheet.create({
   chip: {
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.lg,
+    minHeight: 44,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: radius.full,
     backgroundColor: colors.superficie,
     borderWidth: 1,
@@ -29,6 +37,19 @@ const style = StyleSheet.create({
     backgroundColor: colors.primario,
     borderColor: colors.primario,
   },
-  texto: { fontSize: 13, fontWeight: "600", color: colors.textoSuave },
-  textoActivo: { color: "#FFFFFF" },
+  chipPressed: {
+    opacity: 0.8,
+  },
+  texto: {
+    fontSize: 15,
+    lineHeight: 19,
+    fontWeight: '700',
+    color: colors.textoSuave,
+    includeFontPadding: false,
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+  },
+  textoActivo: {
+    color: '#FFFFFF',
+  },
 });

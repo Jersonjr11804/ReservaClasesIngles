@@ -1,27 +1,44 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { colors, spacing, typography } from '../theme';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { colors, spacing } from "../theme";
 
-export default function EstadoVacio({ icono = 'alert-circle-outline', titulo = 'Vacío', mensaje = '', onAction }) {
+// Vista reutilizable para mostrar un estado vacío cuando no hay resultados.
+// Se usa cuando la búsqueda no coincide con ninguna clase o no hay contenido disponible.
+export default function EstadoVacio({ icono = 'calendar-outline', titulo, mensaje, onAction }) {
   return (
-    <View style={styles.container}>
-      <Ionicons name={icono} size={48} color={colors.textoSuave} />
-      <Text style={[typography.titulo, styles.titulo]}>{titulo}</Text>
+    <View style={styles.contenedor}>
+      <View style={styles.circulo}>
+        <Ionicons name={icono} size={30} color={colors.primario} />
+      </View>
+      <Text style={styles.titulo}>{titulo}</Text>
       <Text style={styles.mensaje}>{mensaje}</Text>
-      {onAction && (
-        <Pressable onPress={onAction} style={styles.boton}>
-          <Text style={styles.botonTexto}>Reiniciar</Text>
-        </Pressable>
-      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing.lg },
-  titulo: { marginTop: spacing.md },
-  mensaje: { color: colors.textoSuave, textAlign: 'center', marginTop: spacing.sm },
-  boton: { marginTop: spacing.md, backgroundColor: colors.primario, paddingVertical: 10, paddingHorizontal: 16, borderRadius: 8 },
-  botonTexto: { color: '#fff', fontWeight: '700' },
+  contenedor: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: spacing.xxl,
+  },
+  circulo: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: colors.primarioSuave,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.lg,
+  },
+  titulo: { fontSize: 17, fontWeight: '700', color: colors.texto, textAlign: 'center' },
+  mensaje: {
+    fontSize: 14,
+    color: colors.textoSuave,
+    textAlign: 'center',
+    marginTop: spacing.sm,
+    lineHeight: 20,
+  },
 });
