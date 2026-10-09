@@ -1,22 +1,34 @@
-// Opciones de filtro disponibles para la vista de clases.
 export const NIVELES = ['Todos', 'Basico', 'Intermedio', 'Avanzado', 'Conversacional'];
-
-// Base de datos local de ejemplo con las clases disponibles en la app.
-export const CLASES = [
+// Define los filtros disponibles para la pantalla principal y el perfil del estudiante.
+ 
+export const clases = [
+  // Arreglo principal con las clases disponibles en la app.
   {
     id: '1',
+    // Identificador único de la clase.
     titulo: 'Inglés desde cero',
+    // Nombre visible de la clase para mostrar en la lista y detalle.
     nivel: 'Basico',
+    // Nivel de inglés que corresponde a esta clase.
     descripcion:
       'Construye tus primeras frases, saludos y presentaciones personales. Ideal si nunca has estudiado inglés formalmente.',
+      // Explicación breve del objetivo educativo de la clase.
     profesor: { nombre: 'Laura Gómez', pais: 'Colombia', foto: 'https://i.pravatar.cc/200?img=45' },
+    // Objeto con los datos del profesor que enseña la clase.
     imagen: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+    // URL de la imagen representativa de la clase.
     precio: 32000,
+    // Precio en pesos colombianos para la clase.
     duracion: 50,
+    // Duración estimada de la sesión en minutos.
     modalidad: 'Virtual',
+    // Forma de impartición del curso.
     rating: 4.8,
+    // Calificación promedio según opiniones o experiencia.
     cupos: 6,
+    // Número inicial de asientos disponibles para la clase.
     horarios: ['Lun 7:00 a.m.', 'Mié 7:00 a.m.', 'Vie 6:00 p.m.'],
+    // Lista de horarios disponibles para reservar la sesión.
   },
   {
     id: '2',
@@ -76,7 +88,7 @@ export const CLASES = [
     modalidad: 'Virtual',
     rating: 4.9,
     cupos: 5,
-    horarios: ['Lun 5:00 p.m.', 'Vie 5:00 p.m.'],
+    horarios: ['Lun 7:00 a.m.', 'Vie 5:00 p.m.'],
   },
   {
     id: '6',
@@ -106,7 +118,7 @@ export const CLASES = [
     modalidad: 'Virtual',
     rating: 4.5,
     cupos: 10,
-    horarios: ['Jue 7:00 p.m.', 'Sáb 11:00 a.m.'],
+    horarios: ['Jue 6:00 p.m.', 'Sáb 11:00 a.m.'],
   },
   {
     id: '8',
@@ -124,7 +136,7 @@ export const CLASES = [
     horarios: ['Mar 8:00 p.m.', 'Sáb 8:00 a.m.'],
   },
 ];
-
-// Formatea el precio para mostrarlo con formato monetario colombiano.
+ 
 export const formatearPrecio = (valor) =>
+  // Convierte un número a formato monetario con separadores y la etiqueta COP.
   '$' + valor.toLocaleString('es-CO') + ' COP';

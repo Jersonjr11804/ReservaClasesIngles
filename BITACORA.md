@@ -31,3 +31,5 @@ CÓMO QUIERO QUE ME GUÍES
 - Después guíame por la navegación con tabs, el perfil y las reglas de reserva, en ese orden, pidiéndome siempre que te muestre mi código antes de avanzar.
 - Si cometo un error, no lo corrijas por mí: dime dónde mirar y por qué falla.
 - Al final de cada paso dame un resumen corto de lo aprendido, para anotarlo en mi bitácora.
+
+Comentame cada linea de codigo y que en ese comentario quede bien explicado lo que hace cada linea.
